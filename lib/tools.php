@@ -12,6 +12,25 @@ namespace Citfact;
 class Tools
 {
 	/**
+	 * @param $var
+	 * @param bool $stdin
+	 * @param bool $die
+	 * @param bool $all
+	 * @return mixed
+	 */
+	public static function pre($var, $stdin=false, $die=false, $all=false){
+		global $USER;
+		if($USER->IsAdmin() || $all){
+			if($stdin){
+				return print_r($var, $stdin);
+			}?>
+			<pre><?print_r($var, $stdin)?></pre>
+		<?
+		}
+		if($die) die;
+	}
+	
+	/**
 	 * @param int $number
 	 * @param array $titles
 	 *
