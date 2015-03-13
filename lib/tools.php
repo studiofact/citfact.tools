@@ -43,4 +43,23 @@ class Tools
 		return $number.' '.$titles[($number % 100 > 4 && $number % 100 < 20) ? 2 : $cases[min($number % 10, 5)]];
 	}
 
+	/**
+	 * @param string $date_from
+	 * @param string $date_to
+	 * @return array
+	 */
+	public static function datediff($date_from, $date_to)
+	{
+		$date_from = new \DateTime($date_from);
+		$date_to = new \DateTime($date_to);
+		$interval = $date_from->diff($date_to);
+		$arReturn = array(
+			'days' => $interval->days,
+			'm' => $interval->m,
+			'd' => $interval->d,
+		);
+
+		return $arReturn;
+	}
+
 }
